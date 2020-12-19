@@ -5,7 +5,7 @@ CREATE DATABASE roles_db;
 USE roles_db;
 
 CREATE TABLE roles (
-  id INT NOT NULL AUTO_INCREMENT,
+  id INT NOT NULL,
   title VARCHAR(30) NULL,
   salary DECIMAL(6,4) NULL,
   department_id INTEGER
