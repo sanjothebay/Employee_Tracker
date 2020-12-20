@@ -41,3 +41,9 @@ VALUE (1, "Managers_Dept"), (14, "Engineering_Dept"),
 SELECT * FROM employee;
 SELECT * FROM roles;
 SELECT * FROM department;
+
+SELECT * FROM employee
+INNER JOIN roles
+ON employee.id = roles.id
+INNER JOIN department
+ON department.id = roles.id;
