@@ -38,9 +38,9 @@ VALUE (1, "Managers_Dept"), (14, "Engineering_Dept"),
 (4, "Engineering_Dept"), (2, "Developing_Dept"), 
 (7, "Developing_Dept"), (5, "Intern_Dept");
 
-SELECT * FROM employee;
-SELECT * FROM roles;
-SELECT * FROM department;
+-- SELECT * FROM employee;
+-- SELECT * FROM roles;
+-- SELECT * FROM department;
 
 SELECT * FROM employee
 INNER JOIN roles

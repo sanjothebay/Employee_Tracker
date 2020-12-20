@@ -1,5 +1,4 @@
 const inquirer = require("inquirer");
-const fs = require("fs");
 
 var mysql = require("mysql");
 
@@ -20,11 +19,12 @@ var connection = mysql.createConnection({
 connection.connect(function (err) {
   if (err) throw err;
   console.log("connected as id " + connection.threadId);
+  employeeTrackerStartQuestionsFunction();
   // ArtisQuestionAppFunction();
 });
 
-function afterConnection() {
-  connection.query("SELECT * FROM Top5000", function (err, res) {
+function ViewAllEpmloyeeFun() {
+  connection.query("SELECT * FROM employee", function (err, res) {
     if (err) throw err;
     console.table(res);
     connection.end();
@@ -39,6 +39,7 @@ function employeeTrackerStartQuestionsFunction() {
         message: "What would you like to do ?",
         name: "trackerStartQuestion",
         choices: [
+          "View Emloyees",
           "Add Epmloyee",
           "Remove Epployee",
           "Update Employee Role",
@@ -46,14 +47,23 @@ function employeeTrackerStartQuestionsFunction() {
           "View All Roles",
           "Add Role",
           "Remove Role",
+          "Exit",
         ],
       },
     ])
     .then((response) => {
       console.log(response);
-      if (response.trackerStartQuestion === "Add Epmloyee") {
-        // postQuestionFunction();
+      switch (response.trackerStartQuestion) {
+        case "View Emloyees":
+          ViewAllEpmloyeeFun();
+          break;
+          case "Exit":
+            connection.end();
+          break;
       }
     });
 }
-employeeTrackerStartQuestionsFunction()
+
+
+
+
