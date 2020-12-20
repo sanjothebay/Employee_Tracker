@@ -20,7 +20,7 @@ var connection = mysql.createConnection({
 connection.connect(function (err) {
   if (err) throw err;
   console.log("connected as id " + connection.threadId);
- // ArtisQuestionAppFunction();
+  // ArtisQuestionAppFunction();
 });
 
 function afterConnection() {
@@ -30,3 +30,30 @@ function afterConnection() {
     connection.end();
   });
 }
+
+function employeeTrackerStartQuestionsFunction() {
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        message: "What would you like to do ?",
+        name: "trackerStartQuestion",
+        choices: [
+          "Add Epmloyee",
+          "Remove Epployee",
+          "Update Employee Role",
+          "Update Emplpoyee Manager",
+          "View All Roles",
+          "Add Role",
+          "Remove Role",
+        ],
+      },
+    ])
+    .then((response) => {
+      console.log(response);
+      if (response.trackerStartQuestion === "Add Epmloyee") {
+        // postQuestionFunction();
+      }
+    });
+}
+employeeTrackerStartQuestionsFunction()
