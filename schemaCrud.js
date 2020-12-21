@@ -86,7 +86,7 @@ function ViewAllEpmloyeeFunction() {
 
 function ViewAllRolesFunction() {
   connection.query(
-    "SELECT id, first_name, last_name, title FROM employee INNER JOIN roles ON employee.role_id = roles.id",
+    "SELECT employee.id, first_name, last_name, title FROM employee INNER JOIN roles ON employee.id = roles.id",
     function (err, res) {
       if (err) throw err;
       console.table(res);
