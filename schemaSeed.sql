@@ -15,7 +15,7 @@ CREATE TABLE roles (
   id INT NOT NULL PRIMARY KEY,
   title VARCHAR(30) NULL,
   salary DECIMAL(8,4) NULL,
-  department_id INTEGER
+  department_id INTEGER,
 );
 
 CREATE TABLE department (
@@ -29,9 +29,9 @@ VALUES (14, "JC", "Rodriguez", 14, 1), (4, "James", "Rios", 24, 2),
 (5, "John", "Carter", 10, 1), (7, "Janice", "Jones", 5, 2);
 
 INSERT INTO roles (id, title, salary, department_id)
-VALUE (1, "Manager", 50.000, 1),(14, "Engineer", 35.000, 2),
-(4, "Engineer", 35.000, 2), (2, "Developer", 25.000, 03), 
-(7, "Developer", 25.000, 03), (5, "Intern", 10.000, 04);
+VALUE (88, "Manager", 50.000, 1),(14, "Engineer", 35.000, 2),
+(24, "Engineer", 35.000, 2), (7, "Developer", 25.000, 03), 
+(5, "Developer", 25.000, 03), (10, "Intern", 10.000, 04);
 
 INSERT INTO department (id,name)
 VALUE (1, "Managers_Dept"), (14, "Engineering_Dept"),

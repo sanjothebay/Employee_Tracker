@@ -73,18 +73,24 @@ function employeeTrackerStartQuestionsFunction() {
 }
 
 function ViewAllEpmloyeeFunction() {
-  connection.query("SELECT id, first_name, last_name FROM employee", function (err, res) {
-    if (err) throw err;
-    console.table(res);
-    connection.end();
-    //employeeTrackerStartQuestionsFunction();
-  });
+  connection.query(
+    "SELECT id, first_name, last_name FROM employee",
+    function (err, res) {
+      if (err) throw err;
+      console.table(res);
+      connection.end();
+      //employeeTrackerStartQuestionsFunction();
+    }
+  );
 }
 
 function ViewAllRolesFunction() {
-  connection.query("SELECT id, first_name, last_name, title FROM employee INNER JOIN roles ON employee.role_id = roles.id", function (err, res) {
-    if (err) throw err;
-    console.table(res);
-    connection.end();
-  });
+  connection.query(
+    "SELECT first_name, last_name, title FROM employee INNER JOIN roles ON employee.role_id = roles.id",
+    function (err, res) {
+      if (err) throw err;
+      console.table(res);
+      connection.end();
+    }
+  );
 }
