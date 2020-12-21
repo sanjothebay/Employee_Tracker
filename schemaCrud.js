@@ -82,7 +82,7 @@ function ViewAllEpmloyeeFunction() {
 }
 
 function ViewAllRolesFunction() {
-  connection.query("SELECT * FROM employee", function (err, res) {
+  connection.query("SELECT id, first_name, last_name, title FROM employee INNER JOIN roles ON employee.id = roles.id where ?", function (err, res) {
     if (err) throw err;
     console.table(res);
     connection.end();
