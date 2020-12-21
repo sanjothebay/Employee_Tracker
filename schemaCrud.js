@@ -18,7 +18,6 @@ connection.connect(function (err) {
   employeeTrackerStartQuestionsFunction();
 });
 
-
 function employeeTrackerStartQuestionsFunction() {
   inquirer
     .prompt([
@@ -27,7 +26,7 @@ function employeeTrackerStartQuestionsFunction() {
         message: "What would you like to do ?",
         name: "trackerStartQuestion",
         choices: [
-          "View Emloyees",
+          "View All Emloyee",
           "Add Epmloyee",
           "Remove Epployee",
           "Update Employee Role",
@@ -42,22 +41,50 @@ function employeeTrackerStartQuestionsFunction() {
     .then((response) => {
       console.log(response);
       switch (response.trackerStartQuestion) {
-        case "View Emloyees":
-          ViewAllEpmloyeeFun();
+        case "View All Emloyee":
+          ViewAllEpmloyeeFunction();
           break;
-          case "Exit":
-            connection.end();
+        case "Add Epmloyee":
+          AddEpmloyeeFunction();
+          break;
+        case "Remove Epployee":
+          RemoveEpployeeFunction();
+          break;
+        case "Update Employee Role":
+          UpdateEmployeeRoleFunction();
+          break;
+        case "Update Emplpoyee Manager":
+          UpdateEmplpoyeeManagerFunction();
+          break;
+        case "View All Roles":
+          ViewAllRolesFunction();
+          break;
+        case "Add Role":
+          AddRoleFunction();
+          break;
+        case "Remove Role":
+          RemoveRoleFunction();
+          break;
+        case "Exit":
+          connection.end();
           break;
       }
     });
 }
 
+function ViewAllEpmloyeeFunction() {
+  connection.query("SELECT id, first_name, last_name FROM employee", function (err, res) {
+    if (err) throw err;
+    console.table(res);
+    connection.end();
+    //employeeTrackerStartQuestionsFunction();
+  });
+}
 
-function ViewAllEpmloyeeFun() {
+function ViewAllRolesFunction() {
   connection.query("SELECT * FROM employee", function (err, res) {
     if (err) throw err;
     console.table(res);
     connection.end();
   });
 }
-
