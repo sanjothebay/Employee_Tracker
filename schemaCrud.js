@@ -84,6 +84,18 @@ function ViewAllEpmloyeeFunction() {
   );
 }
 
+function AddEpmloyeeFunction() {
+  connection.query(
+    "INSERT INTO employee (id, first_name, last_name, role_id, manager_id)",
+    function (err, res) {
+      if (err) throw err;
+      console.table(res);
+      connection.end();
+      //employeeTrackerStartQuestionsFunction();
+    }
+  );
+}
+
 function ViewAllRolesFunction() {
   connection.query(
     "SELECT employee.id, first_name, last_name, title FROM employee INNER JOIN roles ON employee.id = roles.id",
