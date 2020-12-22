@@ -96,6 +96,44 @@ function AddEpmloyeeFunction() {
   );
 }
 
+function RemoveEpployeeFunction() {
+  connection.query(
+    "DELETE FROM employee id, first_name, last_name, role_id, manager_id",
+    function (err, res) {
+      if (err) throw err;
+      console.table(res);
+      connection.end();
+      //employeeTrackerStartQuestionsFunction();
+    }
+  );
+}
+
+function UpdateEmployeeRoleFunction() {
+  connection.query(
+    "SELECT employee.id, first_name, last_name, title FROM employee INNER JOIN roles ON employee.id = roles.id",
+    "UPDATE SET title =   ; WHERE roles.id =  ;",
+    function (err, res) {
+      if (err) throw err;
+      console.table(res);
+      connection.end();
+      //employeeTrackerStartQuestionsFunction();
+    }
+  );
+}
+
+function UpdateEmplpoyeeManagerFunction() {
+  connection.query(
+    "SELECT id, first_name, last_name FROM employee, manager_id",
+    "UPDATE SET manager_id =   ; WHERE employee.manager_id =  ;",
+    function (err, res) {
+      if (err) throw err;
+      console.table(res);
+      connection.end();
+      //employeeTrackerStartQuestionsFunction();
+    }
+  );
+}
+
 function ViewAllRolesFunction() {
   connection.query(
     "SELECT employee.id, first_name, last_name, title FROM employee INNER JOIN roles ON employee.id = roles.id",
@@ -103,6 +141,30 @@ function ViewAllRolesFunction() {
       if (err) throw err;
       console.table(res);
       connection.end();
+    }
+  );
+}
+
+function AddRoleFunction() {
+  connection.query(
+    "INSERT INTO roles (role_id,)",
+    function (err, res) {
+      if (err) throw err;
+      console.table(res);
+      connection.end();
+      //employeeTrackerStartQuestionsFunction();
+    }
+  );
+}
+
+function RemoveRoleFunction() {
+  connection.query(
+    "DELETE FROM role role_id,",
+    function (err, res) {
+      if (err) throw err;
+      console.table(res);
+      connection.end();
+      //employeeTrackerStartQuestionsFunction();
     }
   );
 }
