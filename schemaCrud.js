@@ -78,7 +78,6 @@ function ViewAllEpmloyeeFunction() {
     function (err, res) {
       if (err) throw err;
       console.table(res);
-      // connection.end();
       //employeeTrackerStartQuestionsFunction();
     }
   );
@@ -117,44 +116,35 @@ function AddEpmloyeeFunction() {
     ])
     .then(function (Data) {
       console.log(Data);
-      connection.query("INSERT INTO employee SET ?", {
-        id: Data.NewEmployeeIdInput,
-        first_name: Data.NewEmployeeFirstName,
-        last_name: Data.NewEmployeeLastName,
-        role_id: Data.NewEmployeeRoleId,
-        manager_id: Data.NewEmployeeManagerId,
-      },
-      function (error) {
-        if (error) throw error;
-        console.log("Added New Employee To Database");
-      });
+      connection.query(
+        "INSERT INTO employee SET ?",
+        {
+          id: Data.NewEmployeeIdInput,
+          first_name: Data.NewEmployeeFirstName,
+          last_name: Data.NewEmployeeLastName,
+          role_id: Data.NewEmployeeRoleId,
+          manager_id: Data.NewEmployeeManagerId,
+        },
+        function (error) {
+          if (error) throw error;
+          console.log("Added New Employee To Database");
+          employeeTrackerStartQuestionsFunction();
+        }
+      );
     });
 }
 
-// function AddEpmloyeeFunction() {
-//   connection.query(
-//     "INSERT INTO employee (id, first_name, last_name, role_id, manager_id) VALUES ?",
-//     ("id", "first_name", "last_name", "role_id", "manager_id"),
-//     function (err, res) {
-//       if (err) throw err;
-//       console.table(res);
-//       connection.end();
-//       //employeeTrackerStartQuestionsFunction();
-//     }
-//   );
-// }
-
-// function RemoveEpployeeFunction() {
-//   connection.query(
-//     "DELETE FROM employee id, first_name, last_name, role_id, manager_id",
-//     function (err, res) {
-//       if (err) throw err;
-//       console.table(res);
-//       connection.end();
-//       //employeeTrackerStartQuestionsFunction();
-//     }
-//   );
-// }
+function RemoveEpployeeFunction() {
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        message: "What Employee would you like to Remove ?",
+        name: "removeEmployee",
+        choices: [""]
+      },
+    ])
+}
 
 // function UpdateEmployeeRoleFunction() {
 //   connection.query(
