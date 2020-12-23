@@ -135,15 +135,21 @@ function AddEpmloyeeFunction() {
 }
 
 function RemoveEpployeeFunction() {
+  connection.query("SELECT * FROM employee;", function (err, res) {
+    console.log(res)
   inquirer
     .prompt([
       {
         type: "list",
         message: "What Employee would you like to Remove ?",
         name: "removeEmployee",
-        choices: [""]
-      },
+        choices: res.map(obj => `${obj.last_name}, ${obj.first_name}`)
+
+          }
+          
     ])
+      
+  })
 }
 
 // function UpdateEmployeeRoleFunction() {
