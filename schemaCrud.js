@@ -78,7 +78,7 @@ function ViewAllEpmloyeeFunction() {
     function (err, res) {
       if (err) throw err;
       console.table(res);
-      connection.end();
+      // connection.end();
       //employeeTrackerStartQuestionsFunction();
     }
   );
@@ -115,23 +115,20 @@ function AddEpmloyeeFunction() {
         choices: ["1", "14"],
       },
     ])
-    .then(
-      function (Data) {
-        console.log(Data);
-        "INSERT INTO employee SET ?",
-          {
-            id: Data.NewEmployeeIdInput,
-            first_name: Data.NewEmployeeFirstName,
-            last_name: Data.NewEmployeeLastName,
-            role_id: Data.NewEmployeeRoleId,
-            manager_id: Data.NewEmployeeManagerId,
-          };
+    .then(function (Data) {
+      console.log(Data);
+      connection.query("INSERT INTO employee SET ?", {
+        id: Data.NewEmployeeIdInput,
+        first_name: Data.NewEmployeeFirstName,
+        last_name: Data.NewEmployeeLastName,
+        role_id: Data.NewEmployeeRoleId,
+        manager_id: Data.NewEmployeeManagerId,
       },
       function (error) {
         if (error) throw error;
         console.log("Added New Employee To Database");
-      }
-    );
+      });
+    });
 }
 
 // function AddEpmloyeeFunction() {
