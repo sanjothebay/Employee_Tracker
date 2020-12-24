@@ -136,20 +136,37 @@ function AddEpmloyeeFunction() {
 
 function RemoveEpployeeFunction() {
   connection.query("SELECT * FROM employee;", function (err, res) {
-    console.log(res)
-  inquirer
-    .prompt([
+    console.log(res);
+    inquirer.prompt([
       {
         type: "list",
         message: "What Employee would you like to Remove ?",
         name: "removeEmployee",
-        choices: res.map(obj => `${obj.last_name}, ${obj.first_name}`)
-
-          }
-          
+        choices: res.map((obj) => ({name: `${obj.last_name}, ${obj.first_name}`, value: `${obj.id}` }))
+      },
     ])
-      
-  })
+    .then(function (Data) {
+      console.log(Data);
+      connection.query(
+        "DELETE FROM employee WHERE id, first_name, last_name, role_id, manager_id ?",
+        {
+          removeEmployee: Data.employee,
+          id: Data.id,
+          first_name: Data.first_name,
+          last_name: Data.last_name,
+          role_id: Data.role_id,
+          manager_id: Data.manager_id,
+          
+        },
+
+        function (error) {
+          if (error) throw error;
+          console.log("Removed Employee From Database");
+          employeeTrackerStartQuestionsFunction();
+        }
+      );
+    });
+  });
 }
 
 // function UpdateEmployeeRoleFunction() {
