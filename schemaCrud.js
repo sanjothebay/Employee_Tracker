@@ -169,57 +169,94 @@ function RemoveEpployeeFunction() {
   });
 }
 
-// function UpdateEmployeeRoleFunction() {
-//   connection.query(
-//     "SELECT employee.id, first_name, last_name, title FROM employee INNER JOIN roles ON employee.id = roles.id",
-//     "UPDATE SET title =   ; WHERE roles.id =  ;",
-//     function (err, res) {
-//       if (err) throw err;
-//       console.table(res);
-//       connection.end();
-//       //employeeTrackerStartQuestionsFunction();
-//     }
-//   );
-// }
+function UpdateEmployeeRoleFunction() {
+  connection.query("SELECT * FROM employee;", function (err, res) {
+    console.log(res);
+    inquirer.prompt([
+      {
+        type: "list",
+        message: "What Employee`s Role Would you like to Update?",
+        name: "UpdateEmployeeRole",
+        choices: res.map((obj) => ({name: `${obj.last_name}, ${obj.first_name}`, value: `${obj.id}` }))
+      },
+      {
+        type: "list",
+        message: "What is The New Role Id?",
+        name: "UpdatedRoleID",
+        choices: [88, 24, 14, 10, 5,]
+      },
+    ])
+    .then(function (Data) {
+      console.log(Data);
+      connection.query(
+        // "DELETE FROM employee WHERE id, first_name, last_name, role_id, manager_id ?",
+        // {
+        //   removeEmployee: Data.employee,
+        //   id: Data.id,
+        //   first_name: Data.first_name,
+        //   last_name: Data.last_name,
+        //   role_id: Data.role_id,
+        //   manager_id: Data.manager_id,
+          
+        // },
 
-// function UpdateEmplpoyeeManagerFunction() {
-//   connection.query(
-//     "SELECT id, first_name, last_name FROM employee, manager_id",
-//     "UPDATE SET manager_id =   ; WHERE employee.manager_id =  ;",
-//     function (err, res) {
-//       if (err) throw err;
-//       console.table(res);
-//       connection.end();
-//       //employeeTrackerStartQuestionsFunction();
-//     }
-//   );
-// }
+        function (error) {
+          if (error) throw error;
+          console.log("Employee`s Role Has Been Updated");
+          employeeTrackerStartQuestionsFunction();
+        }
+      );
+    });
+  });
+}
 
-// function ViewAllRolesFunction() {
-//   connection.query(
-//     "SELECT employee.id, first_name, last_name, title FROM employee INNER JOIN roles ON employee.id = roles.id",
-//     function (err, res) {
-//       if (err) throw err;
-//       console.table(res);
-//       connection.end();
-//     }
-//   );
-// }
+function UpdateEmplpoyeeManagerFunction() {
+  connection.query("SELECT * FROM employee;", function (err, res) {
+    console.log(res);
+    inquirer.prompt([
+      {
+        type: "list",
+        message: "What Employee Manager Would you like to Update ?",
+        name: "UpdateEmployeeManager",
+        choices: res.map((obj) => ({name: `${obj.last_name}, ${obj.first_name}`, value: `${obj.id}` }))
+      },
+      {
+        type: "list",
+        message: "What is The New Updated Manager`s Id?",
+        name: "NewRoleID",
+        choices: [88, 14, "Null", ]
+      },
+    ])
+    .then(function (Data) {
+      console.log(Data);
+      connection.query(
+        // "DELETE FROM employee WHERE id, first_name, last_name, role_id, manager_id ?",
+        // {
+        //   removeEmployee: Data.employee,
+        //   id: Data.id,
+        //   first_name: Data.first_name,
+        //   last_name: Data.last_name,
+        //   role_id: Data.role_id,
+        //   manager_id: Data.manager_id,
+          
+        // },
 
-// function AddRoleFunction() {
-//   connection.query("INSERT INTO roles (role_id,)", function (err, res) {
-//     if (err) throw err;
-//     console.table(res);
-//     connection.end();
-//     //employeeTrackerStartQuestionsFunction();
-//   });
-// }
-
-// function RemoveRoleFunction() {
-//   connection.query("DELETE FROM role role_id,", function (err, res) {
-//     if (err) throw err;
-//     console.table(res);
-//     connection.end();
-//     //employeeTrackerStartQuestionsFunction();
-//   });
-// }
+        function (error) {
+          if (error) throw error;
+          console.log("Updated Employee`s Manager`s Id");
+          employeeTrackerStartQuestionsFunction();
+        }
+      );
+    });
+  });
+}
+function ViewAllEpmloyeeFunction() {
+  connection.query(
+    "SELECT id, first_name, last_name FROM employee",
+    function (err, res) {
+      if (err) throw err;
+      console.table(res);
+      //employeeTrackerStartQuestionsFunction();
+    }
+  );
+}
