@@ -83,6 +83,17 @@ function ViewAllEpmloyeeFunction() {
   );
 }
 
+function ViewAllRolesFunction() {
+  connection.query(
+    "SELECT id, first_name, last_name FROM employee",
+    function (err, res) {
+      if (err) throw err;
+      console.table(res);
+      //employeeTrackerStartQuestionsFunction();
+    }
+  );
+}
+
 function AddEpmloyeeFunction() {
   inquirer
     .prompt([
@@ -148,17 +159,8 @@ function RemoveEpployeeFunction() {
     .then(function (Data) {
       console.log(Data);
       connection.query(
-        "DELETE FROM employee WHERE id, first_name, last_name, role_id, manager_id ?",
-        {
-          removeEmployee: Data.employee,
-          id: Data.id,
-          first_name: Data.first_name,
-          last_name: Data.last_name,
-          role_id: Data.role_id,
-          manager_id: Data.manager_id,
-          
-        },
-
+        "DELETE FROM employee WHERE id = ?",
+        Data.removeEmployee,          
         function (error) {
           if (error) throw error;
           console.log("Removed Employee From Database");
@@ -179,6 +181,7 @@ function UpdateEmployeeRoleFunction() {
         name: "UpdateEmployeeRole",
         choices: res.map((obj) => ({name: `${obj.last_name}, ${obj.first_name}`, value: `${obj.id}` }))
       },
+
       {
         type: "list",
         message: "What is The New Role Id?",
@@ -189,17 +192,12 @@ function UpdateEmployeeRoleFunction() {
     .then(function (Data) {
       console.log(Data);
       connection.query(
-        // "DELETE FROM employee WHERE id, first_name, last_name, role_id, manager_id ?",
-        // {
-        //   removeEmployee: Data.employee,
-        //   id: Data.id,
-        //   first_name: Data.first_name,
-        //   last_name: Data.last_name,
-        //   role_id: Data.role_id,
-        //   manager_id: Data.manager_id,
-          
-        // },
+        "UPDATE employee SET role_id = ? WHERE id = ?",
+        [
+          Data.UpdatedRoleID,
+          Data.UpdateEmployeeRole,
 
+        ],
         function (error) {
           if (error) throw error;
           console.log("Employee`s Role Has Been Updated");
