@@ -136,7 +136,7 @@ function AddEpmloyeeFunction() {
         function (error) {
           if (error) throw error;
           console.log("Added New Employee To Database");
-          employeeTrackerStartQuestionsFunction();
+         // employeeTrackerStartQuestionsFunction();
         }
       );
     });
@@ -172,7 +172,7 @@ function UpdateEmployeeRoleFunction() {
           function (error) {
             if (error) throw error;
             console.log("Employee`s Role Has Been Updated");
-            employeeTrackerStartQuestionsFunction();
+           // employeeTrackerStartQuestionsFunction();
           }
         );
       });
@@ -208,7 +208,7 @@ function UpdateEmplpoyeeManagerFunction() {
           function (error) {
             if (error) throw error;
             console.log("Updated Employee`s Manager`s Id");
-            employeeTrackerStartQuestionsFunction();
+           // employeeTrackerStartQuestionsFunction();
           }
         );
       });
@@ -239,7 +239,7 @@ function RemoveEpployeeFunction() {
           function (error) {
             if (error) throw error;
             console.log("Removed Employee From Database");
-            employeeTrackerStartQuestionsFunction();
+           // employeeTrackerStartQuestionsFunction();
           }
         );
       });
@@ -269,7 +269,7 @@ function RemoveRoleFunction() {
         function (error) {
           if (error) throw error;
           console.log("Removed Employee Role From Database");
-          employeeTrackerStartQuestionsFunction();
+         // employeeTrackerStartQuestionsFunction();
         }
       );
     });
