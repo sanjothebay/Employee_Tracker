@@ -26,14 +26,13 @@ function employeeTrackerStartQuestionsFunction() {
         message: "What would you like to do ?",
         name: "trackerStartQuestion",
         choices: [
-          "View All Emloyee",
-          "Add Epmloyee",
-          "Remove Epployee",
-          "Update Employee Role",
-          "Update Emplpoyee Manager",
-          "View All Roles",
-          "Add Role",
-          "Remove Role",
+          "View All Emloyee`s",
+          "View All Emloyee`s Roles",
+          "Add Epmloyee To DataBase",
+          "Update Employee`s Role ID",
+          "Update Emplpoyee`s Manager ID",
+          "Remove Emplpoyee From DataBase",
+          "Remove Emplpoyee`s Role",
           "Exit",
         ],
       },
@@ -41,25 +40,25 @@ function employeeTrackerStartQuestionsFunction() {
     .then((response) => {
       console.log(response);
       switch (response.trackerStartQuestion) {
-        case "View All Emloyee":
+        case "View All Emloyee`s":
           ViewAllEpmloyeeFunction();
           break;
-        case "View All Roles":
+        case "View All Emloyee`s Roles":
           ViewAllRolesFunction();
           break;
-        case "Add Epmloyee":
+        case "Add Epmloyee To DataBase":
           AddEpmloyeeFunction();
           break;
-        case "Update Employee Role":
+        case "Update Employee`s Role ID":
           UpdateEmployeeRoleFunction();
           break;
-        case "Update Emplpoyee Manager":
+        case "Update Emplpoyee`s Manager ID":
           UpdateEmplpoyeeManagerFunction();
           break;
-        case "Remove Epployee":
+        case "Remove Emplpoyee From DataBase":
           RemoveEpployeeFunction();
           break;
-        case "Remove Role":
+        case "Remove Emplpoyee`s Role":
           RemoveRoleFunction();
           break;
         case "Exit":
