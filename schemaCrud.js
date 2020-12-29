@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
-const logo = require('asciiart-logo');
-const config = require('./package.json');
+const logo = require("asciiart-logo");
+const config = require("./package.json");
 var mysql = require("mysql");
 
 var connection = mysql.createConnection({
@@ -20,28 +20,24 @@ connection.connect(function (err) {
   employeeTrackerStartQuestionsFunction();
 });
 
-
-const longText = 'Welcome to the Employee Tracker, ' +
-    '©JC RODRIGUEZ, ';
- 
+const longText = "Welcome to the Employee Tracker, " + "©JC RODRIGUEZ, ";
 console.log(
-    logo({
-        name: 'Employee Tracker APP',
-        font: 'Speed',
-        lineChars: 10,
-        padding: 2,
-        margin: 3,
-        borderColor: 'yellow',
-        logoColor: 'bold-red',
-        textColor: 'white',
-    })
+  logo({
+    name: "Employee Tracker APP",
+    font: "Speed",
+    lineChars: 10,
+    padding: 2,
+    margin: 3,
+    borderColor: "yellow",
+    logoColor: "bold-red",
+    textColor: "white",
+  })
     .emptyLine()
-    .right('version 4.0.1234')
+    .right("version 4.0.1234")
     .emptyLine()
     .center(longText)
     .render()
 );
-
 
 function employeeTrackerStartQuestionsFunction() {
   inquirer
@@ -63,7 +59,6 @@ function employeeTrackerStartQuestionsFunction() {
       },
     ])
     .then((response) => {
-      console.log(response);
       switch (response.trackerStartQuestion) {
         case "View All Emloyee`s":
           ViewAllEpmloyeeFunction();
@@ -92,7 +87,6 @@ function employeeTrackerStartQuestionsFunction() {
       }
     });
 }
-
 
 function ViewAllEpmloyeeFunction() {
   connection.query(
@@ -241,7 +235,6 @@ function UpdateEmplpoyeeManagerFunction() {
   });
 }
 
-
 function RemoveEpployeeFunction() {
   connection.query("SELECT * FROM employee;", function (err, res) {
     inquirer
@@ -272,32 +265,32 @@ function RemoveEpployeeFunction() {
   });
 }
 
-
-
 function RemoveRoleFunction() {
   connection.query("SELECT * FROM employee;", function (err, res) {
-    inquirer.prompt([
-      {
-        type: "list",
-        message: "What Employee`s Role would you like to Remove ?",
-        name: "removeEmployeeRole",
-        choices: res.map((obj) => ({name: `${obj.last_name}, ${obj.first_name}, ${obj.role_id}`, value: `${obj.id}` }))
-      },
-    ])
-    .then(function (Data) {
-      console.log(Data);
-      connection.query(
-        "UPDATE employee SET role_id = NULL WHERE id = ? ",
-         [
-          Data.removeEmployeeRole,
-        ],
-        function (error) {
-          if (error) throw error;
-          console.log("Removed Employee Role From Database");
-          ViewAllEpmloyeeFunction()
-          employeeTrackerStartQuestionsFunction();
-        }
-      );
-    });
+    inquirer
+      .prompt([
+        {
+          type: "list",
+          message: "What Employee`s Role would you like to Remove ?",
+          name: "removeEmployeeRole",
+          choices: res.map((obj) => ({
+            name: `${obj.last_name}, ${obj.first_name}, ${obj.role_id}`,
+            value: `${obj.id}`,
+          })),
+        },
+      ])
+      .then(function (Data) {
+        console.log(Data);
+        connection.query(
+          "UPDATE employee SET role_id = NULL WHERE id = ? ",
+          [Data.removeEmployeeRole],
+          function (error) {
+            if (error) throw error;
+            console.log("Removed Employee Role From Database");
+            ViewAllEpmloyeeFunction();
+            employeeTrackerStartQuestionsFunction();
+          }
+        );
+      });
   });
 }
