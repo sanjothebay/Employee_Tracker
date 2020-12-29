@@ -1,4 +1,6 @@
 const inquirer = require("inquirer");
+const logo = require('asciiart-logo');
+const config = require('./package.json');
 var mysql = require("mysql");
 
 var connection = mysql.createConnection({
@@ -17,6 +19,29 @@ connection.connect(function (err) {
   console.log("connected as id " + connection.threadId);
   employeeTrackerStartQuestionsFunction();
 });
+
+
+const longText = 'Welcome to the Employee Tracker, ' +
+    '©JC RODRIGUEZ, ';
+ 
+console.log(
+    logo({
+        name: 'Employee Tracker APP',
+        font: 'Speed',
+        lineChars: 10,
+        padding: 2,
+        margin: 3,
+        borderColor: 'yellow',
+        logoColor: 'bold-red',
+        textColor: 'white',
+    })
+    .emptyLine()
+    .right('version 4.0.1234')
+    .emptyLine()
+    .center(longText)
+    .render()
+);
+
 
 function employeeTrackerStartQuestionsFunction() {
   inquirer
