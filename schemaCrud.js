@@ -96,7 +96,7 @@ function employeeTrackerStartQuestionsFunction() {
 
 function ViewAllEpmloyeeFunction() {
   connection.query(
-    "SELECT id, first_name, last_name FROM employee",
+    "SELECT id, first_name, last_name, role_id FROM employee",
     function (err, res) {
       if (err) throw err;
       console.table(res);
@@ -170,7 +170,6 @@ function AddEpmloyeeFunction() {
 
 function UpdateEmployeeRoleFunction() {
   connection.query("SELECT * FROM employee;", function (err, res) {
-    console.log(res);
     inquirer
       .prompt([
         {
@@ -208,7 +207,6 @@ function UpdateEmployeeRoleFunction() {
 
 function UpdateEmplpoyeeManagerFunction() {
   connection.query("SELECT * FROM employee;", function (err, res) {
-    console.log(res);
     inquirer
       .prompt([
         {
@@ -216,22 +214,22 @@ function UpdateEmplpoyeeManagerFunction() {
           message: "What Employee Manager Would you like to Update ?",
           name: "UpdateEmployeeManager",
           choices: res.map((obj) => ({
-            name: `${obj.last_name}, ${obj.first_name}`,
+            name: `${obj.last_name}, ${obj.first_name}, Manager's ID: ${obj.manager_id}`,
             value: `${obj.id}`,
           })),
         },
         {
           type: "list",
           message: "What is The New Updated Manager`s Id?",
-          name: "NewRoleID",
-          choices: [88, 14, "Null"],
+          name: "NewManagerID",
+          choices: [1, 2, "Null"],
         },
       ])
       .then(function (Data) {
         console.log(Data);
         connection.query(
           "UPDATE employee SET manager_id = ? WHERE id = ?",
-          [Data.UpdateEmployeeManager, Data.NewRoleID],
+          [Data.UpdateEmployeeManager, Data.NewManagerID],
           function (error) {
             if (error) throw error;
             console.log("Updated Employee`s Manager`s Id");
@@ -246,7 +244,6 @@ function UpdateEmplpoyeeManagerFunction() {
 
 function RemoveEpployeeFunction() {
   connection.query("SELECT * FROM employee;", function (err, res) {
-    console.log(res);
     inquirer
       .prompt([
         {
@@ -279,7 +276,6 @@ function RemoveEpployeeFunction() {
 
 function RemoveRoleFunction() {
   connection.query("SELECT * FROM employee;", function (err, res) {
-    console.log(res);
     inquirer.prompt([
       {
         type: "list",
@@ -298,7 +294,7 @@ function RemoveRoleFunction() {
         function (error) {
           if (error) throw error;
           console.log("Removed Employee Role From Database");
-          ViewAllRolesFunction();
+          ViewAllEpmloyeeFunction()
           employeeTrackerStartQuestionsFunction();
         }
       );
