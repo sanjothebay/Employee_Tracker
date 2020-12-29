@@ -62,19 +62,26 @@ npm run test To run t he tests
 [Inquirer package](https://www.npmjs.com/package/inquirer).
 
 * The dependencies are, [inquirer](https://www.npmjs.com/package/inquirer) for collecting input from the user.
+		[inquirer](https://www.npmjs.com/package/mysql) MYSQL Server Access.
+
+![image](https://user-images.githubusercontent.com/67298961/103260703-42ba6080-4964-11eb-9d54-8d520b681bc2.png)
 
 * The App is runing Node CLI to gather information about each employee.
 
 * Below is an example of what the application looks like. when the Questions are competed.
-IMAGE 
 
+![image](https://user-images.githubusercontent.com/67298961/103259053-6c23be00-495d-11eb-8770-a73fa29849b2.png)
 
 ## Getting Started <a name="Getting_Started"></a>
 
 * Created a `.gitignore` file and include `node_modules/` and `.DS_Store/` so that your `node_modules` so that the directory isn't tracked or uploaded to GitHub. 
 this was done before installing any npm dependencies.
 
-* This is where i Created a the array of questions and exported the packages to use for the application.
+* This is where i Created the array of questions and exported the packages to use for the application.
+
+![image](https://user-images.githubusercontent.com/67298961/103260796-9af16280-4964-11eb-9b73-fccdb4bfbe8c.png)
+
+![image](https://user-images.githubusercontent.com/67298961/103260820-b0ff2300-4964-11eb-9602-3496ffa5bd37.png)
 
 * included a `package.json` with the required dependencies. this was create by running `npm init` when the first set up of the project, before installing any 
 dependencies.
