@@ -100,7 +100,7 @@ function ViewAllEpmloyeeFunction() {
     function (err, res) {
       if (err) throw err;
       console.table(res);
-      //employeeTrackerStartQuestionsFunction();
+      employeeTrackerStartQuestionsFunction();
     }
   );
 }
@@ -111,7 +111,7 @@ function ViewAllRolesFunction() {
     function (err, res) {
       if (err) throw err;
       console.table(res);
-      //employeeTrackerStartQuestionsFunction();
+      employeeTrackerStartQuestionsFunction();
     }
   );
 }
@@ -161,7 +161,8 @@ function AddEpmloyeeFunction() {
         function (error) {
           if (error) throw error;
           console.log("Added New Employee To Database");
-         // employeeTrackerStartQuestionsFunction();
+          ViewAllRolesFunction();
+          employeeTrackerStartQuestionsFunction();
         }
       );
     });
@@ -197,7 +198,8 @@ function UpdateEmployeeRoleFunction() {
           function (error) {
             if (error) throw error;
             console.log("Employee`s Role Has Been Updated");
-           // employeeTrackerStartQuestionsFunction();
+            ViewAllRolesFunction();
+            employeeTrackerStartQuestionsFunction();
           }
         );
       });
@@ -233,7 +235,8 @@ function UpdateEmplpoyeeManagerFunction() {
           function (error) {
             if (error) throw error;
             console.log("Updated Employee`s Manager`s Id");
-           // employeeTrackerStartQuestionsFunction();
+            ViewAllRolesFunction();
+            employeeTrackerStartQuestionsFunction();
           }
         );
       });
@@ -264,7 +267,8 @@ function RemoveEpployeeFunction() {
           function (error) {
             if (error) throw error;
             console.log("Removed Employee From Database");
-           // employeeTrackerStartQuestionsFunction();
+            ViewAllRolesFunction();
+            employeeTrackerStartQuestionsFunction();
           }
         );
       });
@@ -294,7 +298,8 @@ function RemoveRoleFunction() {
         function (error) {
           if (error) throw error;
           console.log("Removed Employee Role From Database");
-         // employeeTrackerStartQuestionsFunction();
+          ViewAllRolesFunction();
+          employeeTrackerStartQuestionsFunction();
         }
       );
     });
