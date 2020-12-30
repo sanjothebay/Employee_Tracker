@@ -129,7 +129,7 @@ INSERT INTO department
 * Link to video demonstrating the entirety of the app's functionality 
 
 Click Here:
-[Project explanation]()
+[Project explanation](https://drive.google.com/file/d/15zcTdIJHip9xPwCM9RVRq8PPFO2tKUrL/view)
 
-
+https://drive.google.com/file/d/15zcTdIJHip9xPwCM9RVRq8PPFO2tKUrL/view
 
