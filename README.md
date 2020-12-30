@@ -72,7 +72,7 @@ npm run test To run t he tests
 
 ![image](https://user-images.githubusercontent.com/67298961/103259053-6c23be00-495d-11eb-8770-a73fa29849b2.png)
 
-https://user-images.githubusercontent.com/67298961/103324405-173f8080-4a0d-11eb-8414-f903e6fb33b1.mp4
+![4rzin3](https://user-images.githubusercontent.com/67298961/103324466-48b84c00-4a0d-11eb-9906-c9ca092b468d.gif)
 
 ## Getting Started <a name="Getting_Started"></a>
 
