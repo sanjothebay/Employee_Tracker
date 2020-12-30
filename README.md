@@ -72,7 +72,7 @@ npm run test To run t he tests
 
 ![image](https://user-images.githubusercontent.com/67298961/103259053-6c23be00-495d-11eb-8770-a73fa29849b2.png)
 
-![Employee Tracker](assets/employee_Tracker.webm)
+![Employee Tracker](assets/employee_Tracker.gif)
 
 ## Getting Started <a name="Getting_Started"></a>
 
